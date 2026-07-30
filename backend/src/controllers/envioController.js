@@ -1,4 +1,4 @@
-const Envio = require('../models/envioModel');
+const Envio = require('../../src/models/envioModel');
 
 const crearEnvio = async (req, res) => {
     try {
