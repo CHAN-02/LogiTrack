@@ -1,7 +1,7 @@
 {
   "name": "logitrack",
   "version": "1.0.0",
-  "description": "",
+  "description": "\"# LogiTrack - Plataforma Log�stica SaaS Multitenant\"",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,5 +16,14 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "pg": "^8.22.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CHAN-02/LogiTrack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CHAN-02/LogiTrack/issues"
+  },
+  "homepage": "https://github.com/CHAN-02/LogiTrack#readme"
 }
