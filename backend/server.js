@@ -1,7 +1,7 @@
 const express = require('express');
 const { Pool } = require('pg');
 require('dotenv').config();
-
+const tenantRoutes = require('./routes/tenantRoutes');
 const db = require('./models');
 
 const app = express();
@@ -30,6 +30,7 @@ pool.connect((err, client, release) => {
 
 
 app.use(express.json());
+app.use('/api/tenants', tenantRoutes);
 
 
 // Prueba temporal: verificar modelos Sequelize cargados
