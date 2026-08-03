@@ -2,6 +2,9 @@ const express = require('express');
 const { Pool } = require('pg');
 require('dotenv').config();
 
+// 1. Importar las rutas de empres
+const empresaRoutes = require('./src/routes/empresaRoutes');
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -25,8 +28,25 @@ pool.connect((err, client, release) => {
 
 app.use(express.json());
 
+// 2. Registrar las rutas de la API (aquí es donde se conectan)
+app.use('/api/empresas', empresaRoutes);
+
 app.get('/', (req, res) => {
   res.send('Servidor de LogiTrack funcionando correctamente 🚀');
+});
+
+// Endpoint para probar la conexión con una consulta a la BD
+app.get('/test-db', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT NOW()');
+    res.json({
+      mensaje: 'Conexión a PostgreSQL funcionando correctamente',
+      fechaServidor: result.rows[0].now
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al consultar la base de datos' });
+  }
 });
 
 app.listen(port, () => {
