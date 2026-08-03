@@ -4,6 +4,7 @@ require('dotenv').config();
 const tenantRoutes = require('./routes/tenantRoutes');
 const db = require('./models');
 const userRoutes = require('./routes/userRoutes');
+const customerRoutes = require('./routes/customerRoutes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -33,8 +34,7 @@ pool.connect((err, client, release) => {
 app.use(express.json());
 app.use('/api/tenants', tenantRoutes);
 app.use('/api/users', userRoutes);
-
-
+app.use('/api/customers', customerRoutes);
 
 
 
